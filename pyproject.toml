@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ncr-cipher"
+version = "2.2.0"
+description = "Combinatorics-based symmetric encryption using nCr trapdoor + CBC chaining"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+ncr = "ncr_cipher.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ncr_cipher*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
