@@ -42,7 +42,7 @@ def _nCr(n: int, r: int) -> int:
 
 # ── KDF ──────────────────────────────────────────────────────────────────────
 def _derive(password: bytes, salt: bytes,
-            N: int = 131072, r: int = 8, p: int = 1) -> tuple[int, int, bytes, bytes]:
+            N: int = 16384, r: int = 8, p: int = 1) -> tuple[int, int, bytes, bytes]:
     """
     scrypt(password, salt) → 80 bytes
       [0:8]   → n1  = (int % 2**20) + 511
@@ -125,7 +125,7 @@ class NCRKey:
 
     # ── Constructors ──────────────────────────────────────────────────────────
     @classmethod
-    def generate(cls, password: bytes, N: int = 131072) -> "NCRKey":
+    def generate(cls, password: bytes, N: int = 16384) -> "NCRKey":
         """Derive a fresh key from *password* (new random salt)."""
         salt = secrets.token_bytes(32)
         n1, n2, sk, hk = _derive(password, salt, N=N)

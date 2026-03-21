@@ -13,8 +13,15 @@ from tkinter import filedialog, ttk
 
 # ── Try to import ncr_cipher ──────────────────────────────────────────────────
 try:
+try:
     from ncr_cipher import NCRKey, NCRError, NCRAuthError, NCRFormatError
     _HAS_NCR = True
+except ImportError:
+    try:
+        from core import NCRKey, NCRError, NCRAuthError, NCRFormatError
+        _HAS_NCR = True
+    except ImportError:
+        _HAS_NCR = False
 except ImportError:
     _HAS_NCR = False
 
@@ -199,7 +206,7 @@ class KeygenTab(BaseTab):
         if not dest:
             self._set_status("Choose a destination for the key file.", ok=False); return
 
-        N = 2 ** self._n_var.get()
+        N = 2 ** int(self._n_var.get())
         self._progress.start(10)
         self._result_var.set("")
 

@@ -21,7 +21,10 @@ import threading
 import time
 from pathlib import Path
 
-from ncr_cipher.core import NCRKey, NCRError, NCRAuthError, NCRFormatError, VERSION
+try:
+    from ncr_cipher.core import NCRKey, NCRError, NCRAuthError, NCRFormatError, VERSION
+except ImportError:
+    from core import NCRKey, NCRError, NCRAuthError, NCRFormatError, VERSION
 
 # ── Colour helpers ────────────────────────────────────────────────────────────
 _COLOUR = sys.stderr.isatty()
@@ -263,6 +266,13 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     try:
+        if len(sys.argv) == 1:
+            # No arguments — launch GUI instead
+            import subprocess
+            import os
+            gui = os.path.join(os.path.dirname(__file__), "gui.py")
+            subprocess.Popen([sys.executable, gui])
+            return
         args = build_parser().parse_args()
         if args.version:
             print(f"ncr-cipher {VERSION}")

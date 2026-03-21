@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ncr-cipher"
-version = "2.2.1"
+version = "2.2.0"
 description = "Combinatorics-based symmetric encryption using nCr trapdoor + CBC chaining"
 readme = "README.md"
 license = { file = "LICENSE" }
