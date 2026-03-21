@@ -1,0 +1,95 @@
+name: Publish to PyPI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build package
+        run: |
+          pip install build
+          python -m build
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+```
+
+Click **Commit new file**.
+
+---
+
+## PART 3 — Set Up PyPI
+
+**Step 5 — Create a PyPI account**
+
+Go to **https://pypi.org/account/register/**
+
+Fill in username, email, password → verify your email.
+
+---
+
+**Step 6 — Enable 2FA on PyPI (required for publishing)**
+
+- Go to **https://pypi.org/manage/account/**
+- Scroll to **Two factor authentication**
+- Click **Add 2FA** → use an authenticator app like Google Authenticator
+
+---
+
+**Step 7 — Set up Trusted Publishing**
+
+- Go to **https://pypi.org/manage/account/publishing/**
+- Scroll down to **Add a new pending publisher**
+- Fill in:
+
+| Field | Value |
+|---|---|
+| PyPI Project Name | `ncr-cipher` |
+| Owner | your GitHub username |
+| Repository name | `ncr-cipher` |
+| Workflow name | `publish.yml` |
+| Environment name | leave blank |
+
+- Click **Add**
+
+---
+
+## PART 4 — Publish!
+
+**Step 8 — Create a Release on GitHub**
+
+- Go to your GitHub repo
+- Click **Releases** (right sidebar)
+- Click **Create a new release**
+- Click **Choose a tag** → type `v2.2.0` → click **Create new tag**
+- Release title: `v2.2.0`
+- Description: `Initial release`
+- Click **Publish release**
+
+---
+
+**Step 9 — Watch it publish automatically**
+
+- Go to your repo → click **Actions** tab
+- You'll see a workflow running called **Publish to PyPI**
+- It takes about 1-2 minutes
+- When it shows a green ✓ — your package is live!
+
+---
+
+**Step 10 — Verify it's live**
+
+Go to:
+```
+https://pypi.org/project/ncr-cipher/
