@@ -1,6 +1,8 @@
 # ncr-cipher
 
-**Production-grade file encryption CLI & GUI** — a single `ncr` command available everywhere in your terminal after installation, on Windows, macOS, and Linux. Also comes with a modern desktop GUI.
+**DEVELOPMENTAL EXPERIMENT PROJECT(FEEL FREE TO TRY AND TEST OR EVEN CRAK IF POSSIBLE ) **
+
+**NOT RECOMMENED FOR USAGE WHEN PRIORITY IS HIGH SECURITY file encryption CLI & GUI** — a single `ncr` command available everywhere in your terminal after installation, on Windows, macOS, and Linux. Also comes with a modern desktop GUI.
 
 Built on the **NCR3 cipher** — a combinatorics-based encryption scheme using binomial coefficients (nCr) as a trapdoor, with CBC chaining, HMAC-SHA3-256 authentication, and scrypt KDF.
 
