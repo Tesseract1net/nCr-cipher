@@ -1,6 +1,6 @@
 # ncr-cipher
 
-**DEVELOPMENTAL EXPERIMENT PROJECT(FEEL FREE TO TRY AND TEST OR EVEN CRAK IF POSSIBLE ) **
+**DEVELOPMENTAL EXPERIMENT PROJECT(FEEL FREE TO TRY AND TEST OR CRACK ) **
 
 **NOT RECOMMENED FOR USAGE WHEN PRIORITY IS HIGH SECURITY file encryption CLI & GUI** — a single `ncr` command available everywhere in your terminal after installation, on Windows, macOS, and Linux. Also comes with a modern desktop GUI.
 
